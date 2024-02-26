@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
-
+        ///// mjadlyy
 
     }
     public  static void maiiin(){
