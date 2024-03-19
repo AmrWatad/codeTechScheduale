@@ -13,10 +13,10 @@ public class enrollment {
     private Long id;
     private String startDate;
     private String endDate;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "studentID")
     private student student;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseDetailsID")
     private courseDetails courseDetails;
 

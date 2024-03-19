@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.security.PrivateKey;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,13 +27,16 @@ public class student {
     private boolean active;
     @OneToMany(mappedBy = "student")
     private List<enrollment> enrollments;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "studentPrivateLesson", joinColumns = @JoinColumn(name = "studentID"), inverseJoinColumns = @JoinColumn(name = "privateLessonID"))
     private List<privateLesson> privateLessons;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "studentLesson", joinColumns = @JoinColumn(name = "studentID"), inverseJoinColumns = @JoinColumn(name = "lessonID"))
     private List<lesson> lessons;
 
     public student() {
+        enrollments = new ArrayList<>();
+        privateLessons = new ArrayList<>();
+        lessons = new ArrayList<>();
     }
 }

@@ -3,6 +3,7 @@ package org.institute.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,10 +17,11 @@ public class privateLesson {
     private int cost;
     @ManyToMany(mappedBy = "privateLesson")
     private List<student> students;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lecturerID")
     private lecturer lecturer;
 
     public privateLesson() {
+        students = new ArrayList<>();
     }
 }

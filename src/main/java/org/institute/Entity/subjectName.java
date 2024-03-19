@@ -11,7 +11,7 @@ public class subjectName {
     private Long id;
     private String name;
     private String description;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseID")
     private course course;
 

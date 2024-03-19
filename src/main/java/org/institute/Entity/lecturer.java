@@ -3,6 +3,7 @@ package org.institute.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,5 +34,8 @@ public class lecturer {
     private List<courseDetails> courseDetailsList;
 
     public lecturer() {
+        privateLessons = new ArrayList<>();
+        lessons = new ArrayList<>();
+        courseDetailsList = new ArrayList<>();
     }
 }
