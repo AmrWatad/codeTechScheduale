@@ -22,9 +22,8 @@ public class courseService {
     private boolean addCourseDetails(Long courseID, courseDetails courseDetails){
         course course = courseRepository.findById(courseID).orElse(null);
         if (course != null) {
-            List<courseDetails> courseDetailsList = course.getCourseDetailsList();
-            courseDetailsList.add(courseDetails);
-            courseRepository.addCourseDetailsToCourse(courseID, courseDetailsList);
+            course.addCourseDetailsList(courseDetails);
+            courseRepository.save(course);
             return true;
         }
         return false;

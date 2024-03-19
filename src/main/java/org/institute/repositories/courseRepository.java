@@ -12,8 +12,4 @@ import java.util.List;
 
 @Repository
 public interface courseRepository extends JpaRepository<course , Long> {
-    @Modifying
-    @Transactional
-    @Query("UPDATE course c SET c.courseDetailsList = :courseDetailsList WHERE c.id = :courseID")
-    void addCourseDetailsToCourse(@Param("courseID") Long courseID, @Param("courseDetailsList") List<courseDetails> courseDetailsList);
 }

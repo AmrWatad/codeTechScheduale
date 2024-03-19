@@ -29,4 +29,8 @@ public class course {
         subjectNames = new ArrayList<>();
         courseDetailsList = new ArrayList<>();
     }
+
+    public void addCourseDetailsList(courseDetails courseDetails) {
+        this.courseDetailsList.add(courseDetails);
+    }
 }
