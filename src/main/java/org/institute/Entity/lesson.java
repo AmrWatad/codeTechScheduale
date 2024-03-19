@@ -7,19 +7,25 @@ import java.util.List;
 
 @Entity
 @Data
-public class privateLesson {
+public class lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Double lessonLong;
     private String date;
-    private String lessonDuration;
-    private int cost;
-    @ManyToMany(mappedBy = "privateLesson")
+    private String time;
+    private boolean isCanceled;
+    private String material;
+    @ManyToMany(mappedBy = "lesson")
     private List<student> students;
     @ManyToOne
     @JoinColumn(name = "lecturerID")
     private lecturer lecturer;
+    @ManyToOne
+    @JoinColumn(name = "courseDetailsID")
+    private courseDetails courseDetails;
 
-    public privateLesson() {
+    public lesson() {
     }
 }
+

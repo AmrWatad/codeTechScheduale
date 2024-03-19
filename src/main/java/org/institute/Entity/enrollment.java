@@ -1,33 +1,25 @@
 package org.institute.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.util.List;
 
 @Entity
+@Data
 public class enrollment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String enrollmentDate;
+    private String startDate;
+    private String endDate;
+    @ManyToOne
+    @JoinColumn(name = "studentID")
+    private student student;
+    @ManyToOne
+    @JoinColumn(name = "courseDetailsID")
+    private courseDetails courseDetails;
 
     public enrollment() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getEnrollmentDate() {
-        return enrollmentDate;
-    }
-
-    public void setEnrollmentDate(String enrollmentDate) {
-        this.enrollmentDate = enrollmentDate;
     }
 }
