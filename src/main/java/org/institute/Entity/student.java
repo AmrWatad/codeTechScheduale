@@ -34,9 +34,19 @@ public class student {
     @JoinTable(name = "studentLesson", joinColumns = @JoinColumn(name = "studentID"), inverseJoinColumns = @JoinColumn(name = "lessonID"))
     private List<lesson> lessons;
 
-    public student() {
+    public student(String firstName, String lastName, String password, String birthDay, boolean gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.birthDay = birthDay;
+        this.gender = gender;
+        this.active = true;
         enrollments = new ArrayList<>();
         privateLessons = new ArrayList<>();
         lessons = new ArrayList<>();
+    }
+
+    public void addEnrollments(enrollment enrollment) {
+        this.enrollments.add(enrollment);
     }
 }

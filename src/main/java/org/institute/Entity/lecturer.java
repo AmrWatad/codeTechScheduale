@@ -33,7 +33,15 @@ public class lecturer {
     @ManyToMany(mappedBy = "lecturer")
     private List<courseDetails> courseDetailsList;
 
-    public lecturer() {
+    public lecturer(String firstName, String lastName, String password, String major, String experience, String topics, boolean gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.major = major;
+        this.experience = experience;
+        this.topics = topics;
+        this.gender = gender;
+        this.active = true;
         privateLessons = new ArrayList<>();
         lessons = new ArrayList<>();
         courseDetailsList = new ArrayList<>();

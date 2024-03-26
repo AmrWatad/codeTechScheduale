@@ -14,7 +14,15 @@ public class courseDetailsService {
         this.courseDetailsRepository = courseDetailsRepository;
     }
 
-    private void addCourseDetails(courseDetails courseDetails) {
+    private void saveCourseDetails(courseDetails courseDetails) {
         courseDetailsRepository.save(courseDetails);
+    }
+    public boolean addCourseDetails(courseDetails courseDetails) {
+        try {
+            saveCourseDetails(courseDetails);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

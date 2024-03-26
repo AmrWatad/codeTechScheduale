@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 @Entity
@@ -21,7 +22,14 @@ public class privateLesson {
     @JoinColumn(name = "lecturerID")
     private lecturer lecturer;
 
-    public privateLesson() {
+    public privateLesson(String date, String lessonDuration, int cost) {
+        this.date = date;
+        this.lessonDuration = lessonDuration;
+        if (cost >= 0) {
+            this.cost = cost;
+        } else {
+            throw new InputMismatchException("can not put capacity lower that 0");
+        }
         students = new ArrayList<>();
     }
 }

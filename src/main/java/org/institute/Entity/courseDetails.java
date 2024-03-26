@@ -15,7 +15,7 @@ public class courseDetails {
     private String startDate;
     private String EndDate;
     private String scheduleDetails;
-    private String studentsNum;
+    private int studentsNum;
     @OneToMany(mappedBy = "courseDetails")
     private List<enrollment> enrollments;
     @OneToMany(mappedBy = "courseDetails")
@@ -27,9 +27,16 @@ public class courseDetails {
     @JoinColumn(name = "courseID")
     private course course;
 
-    public courseDetails() {
+    public courseDetails(String startDate, String endDate, String scheduleDetails, int studentsNum) {
+        this.startDate = startDate;
+        this.EndDate = endDate;
+        this.scheduleDetails = scheduleDetails;
+        this.studentsNum = studentsNum;
         lecturers = new ArrayList<>();
         lessons = new ArrayList<>();
         enrollments = new ArrayList<>();
+    }
+    public boolean isEntryAllowed(){
+        return studentsNum == enrollments.size();
     }
 }

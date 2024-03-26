@@ -3,6 +3,9 @@ package org.institute.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.InputMismatchException;
+import java.util.Objects;
+
 @Entity
 @Data
 public class subjectName {
@@ -15,6 +18,11 @@ public class subjectName {
     @JoinColumn(name = "courseID")
     private course course;
 
-    public subjectName() {
+    public subjectName(String name) {
+        if (!Objects.equals(name, "")) {
+            this.name = name;
+        } else {
+            throw new InputMismatchException("can not put empty name");
+        }
     }
 }

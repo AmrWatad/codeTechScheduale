@@ -3,6 +3,7 @@ package org.institute.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -20,6 +21,13 @@ public class enrollment {
     @JoinColumn(name = "courseDetailsID")
     private courseDetails courseDetails;
 
-    public enrollment() {
+    public enrollment(org.institute.Entity.student student, org.institute.Entity.courseDetails courseDetails) {
+        LocalDate current = LocalDate.now();
+        int day = current.getDayOfMonth();
+        int month = current.getMonthValue();
+        int year = current.getYear();
+        this.startDate = day + "/" + month + "/" + year;
+        this.student = student;
+        this.courseDetails = courseDetails;
     }
 }

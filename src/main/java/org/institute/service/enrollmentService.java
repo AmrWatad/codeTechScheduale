@@ -14,7 +14,16 @@ public class enrollmentService {
         this.enrollmentRepository = enrollmentRepository;
     }
 
-    private void addEnrollment(enrollment enrollment) {
+    private void saveEnrollment(enrollment enrollment) {
         enrollmentRepository.save(enrollment);
+    }
+
+    public boolean addEnrollment(enrollment enrollment) {
+        try {
+            saveEnrollment(enrollment);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

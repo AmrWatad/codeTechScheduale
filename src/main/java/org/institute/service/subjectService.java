@@ -14,7 +14,15 @@ public class subjectService {
         this.subjectRepository = subjectRepository;
     }
 
-    private void addSubject(subjectName subjectName) {
+    private void saveSubject(subjectName subjectName) {
         subjectRepository.save(subjectName);
+    }
+    public boolean addSubject(subjectName subjectName) {
+        try {
+            saveSubject(subjectName);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

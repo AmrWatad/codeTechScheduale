@@ -16,16 +16,63 @@ public class courseService {
         this.courseRepository = courseRepository;
     }
 
-    private void addCourse(course course) {
+    private void saveCourse(course course) {
         courseRepository.save(course);
     }
-    private boolean addCourseDetails(Long courseID, courseDetails courseDetails){
+    public boolean addCourse(course course) {
+        try {
+            saveCourse(course);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    private boolean addCourseDetailsH(Long courseID, courseDetails courseDetails){
         course course = courseRepository.findById(courseID).orElse(null);
         if (course != null) {
-            course.addCourseDetailsList(courseDetails);
+            course.addCourseDetails(courseDetails);
             courseRepository.save(course);
             return true;
         }
         return false;
+    }
+    public boolean addCourseDetails(Long courseID, courseDetails courseDetails) {
+        try {
+            return addCourseDetailsH(courseID, courseDetails);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    private boolean addClassH(Long courseID, classf classf){
+        course course = courseRepository.findById(courseID).orElse(null);
+        if (course != null) {
+            course.addClass(classf);
+            courseRepository.save(course);
+            return true;
+        }
+        return false;
+    }
+    public boolean addClass(Long courseID, classf classf) {
+        try {
+            return addClassH(courseID, classf);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    private boolean addSubjectH(Long courseID, subjectName subjectName){
+        course course = courseRepository.findById(courseID).orElse(null);
+        if (course != null) {
+            course.addSubject(subjectName);
+            courseRepository.save(course);
+            return true;
+        }
+        return false;
+    }
+    public boolean addSubject(Long courseID, subjectName subjectName) {
+        try {
+            return addSubjectH(courseID, subjectName);
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

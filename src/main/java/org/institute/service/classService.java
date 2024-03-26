@@ -16,18 +16,16 @@ public class classService {
         this.classRepository = classRepository;
     }
 
-    private void addClassH(classf classf) {
+    private void saveClass(classf classf) {
         classRepository.save(classf);
     }
+
     public boolean addClass(classf classf) {
-        if (classf.getNum() == 0 || classf.getCapacity() == 0 || Objects.equals(classf.getCity(), "") || Objects.equals(classf.getLocation(), "")) {
-            try {
-                addClassH(classf);
-                return true;
-            } catch (Exception e) {
-                return false;
-            }
+        try {
+            saveClass(classf);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
-        return false;
     }
 }

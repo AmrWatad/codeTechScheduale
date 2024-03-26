@@ -26,7 +26,10 @@ public class lesson {
     @JoinColumn(name = "courseDetailsID")
     private courseDetails courseDetails;
 
-    public lesson() {
+    public lesson(Double lessonLong, String date, String time) {
+        this.lessonLong = lessonLong;
+        this.date = date;
+        this.time = time;
         students = new ArrayList<>();
     }
 }
